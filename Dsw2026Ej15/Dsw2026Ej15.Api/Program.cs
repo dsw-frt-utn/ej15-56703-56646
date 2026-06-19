@@ -6,7 +6,8 @@ namespace Dsw2026Ej15.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddHealthChecks(); 
+            builder.Services.AddSingleton<IPersistence, PersistenceInMemory>(); 
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -14,6 +15,10 @@ namespace Dsw2026Ej15.Api
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
+            
+            app.UseMiddleware<GlobalExceptionMiddleware>();
+
+            app.MapHealthChecks("/health-check");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

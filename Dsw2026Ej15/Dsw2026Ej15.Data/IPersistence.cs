@@ -1,6 +1,7 @@
 ﻿using Dsw2026Ej15.Domain;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace Dsw2026Ej15.Data
@@ -10,5 +11,7 @@ namespace Dsw2026Ej15.Data
         IEnumerable<Speciality> GetAllSpecialities();
         IEnumerable<Doctor> GetAllDoctors();
         void AddDoctor(Doctor doctor);
+        Speciality? GetSpecialityById(Guid id);
+        Doctor? GetDoctorById(Guid id);
     }
 }

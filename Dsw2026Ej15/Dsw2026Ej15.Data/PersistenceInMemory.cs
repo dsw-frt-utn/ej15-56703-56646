@@ -1,6 +1,7 @@
 ﻿using Dsw2026Ej15.Domain;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
 
@@ -36,5 +37,9 @@ namespace Dsw2026Ej15.Data
         public IEnumerable<Speciality> GetAllSpecialities() => _specialities;
         public IEnumerable<Doctor> GetAllDoctors() => _doctors;
         public void AddDoctor(Doctor doctor) => _doctors.Add(doctor);
+        public Speciality? GetSpecialityById(Guid id) => _specialities.FirstOrDefault(s => s.Id == id);
+        public Doctor? GetDoctorById(Guid id) => _doctors.FirstOrDefault(d => d.Id == id);
+
+
     }
 }
